@@ -1,0 +1,31 @@
+.user-info .profile-picture{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 30px;
+}
+.user-info .user-info{
+    width: 80%;
+
+
+}
+ .user-info .name{
+    font-size: 20px;
+    font-weight: 900;
+    margin: 0;
+
+}
+
+.user-info .follow-btn{
+    color: var(--tPrimary);
+    border: 1px solid var(--tPrimary);
+    background-color: transparent;
+    height: 30px;
+    border-radius: 30px;
+    padding-left:15px;
+    padding-right:15px;
+    margin-top: 10px;
+    margin-left: 5%;
+
+
+}

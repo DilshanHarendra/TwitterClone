@@ -1,0 +1,76 @@
+.widget{
+    background-color: var(--tPrimayBg);
+    color: var(--tPrimaryLetters);
+    height: 100vh;
+    flex: 0.3;
+    overflow-y: scroll;
+    padding-bottom: 80px;
+    min-width: 200px;
+}
+.widget::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.widget{
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.widget .topic{
+    align-items: center;
+    font-size: 20px;
+    background-color: var(--widgetBackground);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding-top: 15px !important;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    width: 95%;
+}
+
+
+
+
+.widget .widget-box{
+    background-color: var(--widgetBackground);
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    width: 95%;
+}
+.widget .widget-box-end{
+    background-color: var(--widgetBackground);
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    width: 95%;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    color: var(--tPrimary);
+}
+
+.widget .list-item .item-center{
+    font-weight: 900;
+
+}
+
+.widget .topic h1{
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.widget .topic .setting{
+    color: var(--tPrimary);
+}
+
+.widget .search{
+    width: 95%;
+    background-color: var(--widgetBackground);
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    color: var(--tPrimaryLetters);
+    font-family: FontAwesome;
+}
+
+.widget ::placeholder{
+    color: gray;
+}

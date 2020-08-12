@@ -1,0 +1,23 @@
+.side-bar-link{
+    align-items: center;
+    cursor: pointer;
+    border-radius: 30px;
+    max-width: fit-content;
+    padding: 10px;
+}
+.side-bar-link h1{
+    font-size:20px ;
+    font-weight: 900;
+    margin-left: 20px;
+    margin-top: 5px;
+    background-color: transparent;
+}
+
+.side-bar-link:hover{
+    background-color:var(--tPrimayBgkHover);
+
+    transition: 200ms ease-out;
+}
+
+
+

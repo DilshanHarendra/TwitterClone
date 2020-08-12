@@ -1,0 +1,57 @@
+.signup{
+    background-color: white;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--widgetBackground);
+    display: grid;
+    place-items: center;
+}
+.signup .box{
+    color: var(--tPrimaryLetters);
+    display: block;
+    padding: 50px;
+    background-color: var(--tPrimayBg);
+    min-width: 350px;
+
+}
+.signup .twitter-icon{
+    font-size: 30px;
+    text-align: center;
+    margin-left: 45%;
+}
+.signup .box h1{
+    font-size: 25px;
+    font-weight: 900;
+}
+.signup .box input{
+    background-color: transparent;
+    color: var(--tPrimaryLetters);
+    border: none;
+    outline: none;
+    width: 90%;
+    border-bottom: 1px solid gray;
+    padding: 10px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right:auto;
+    display: block;
+}
+.signup .box button{
+    background-color: var(--tPrimary);
+    color: var(--tPrimaryLetters);
+    padding: 10px;
+    border-radius: 30px;
+    width: 50%;
+    display: block;
+    outline: none;
+    border: none;
+}
+.signup .box button:hover{
+    opacity: 0.5;
+}
+
+.signup a{
+    text-align: center;
+    margin-top: 20px;
+    display: block;
+}

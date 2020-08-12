@@ -1,0 +1,45 @@
+.feed{
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    width: 100%;
+    color: var(--tPrimaryLetters);
+    overflow-y: scroll;
+    height: 100vh;
+}
+.feed::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.feed{
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.feed .title{
+    border-bottom: 1px solid rgba(255,255,255,0.2) ;
+    align-items: center;
+}
+
+.feed .title h1{
+    font-size: 20px;
+    font-weight: 900;
+    padding: 10px;
+}
+.feed .no-post{
+    width: 100%;
+}
+.feed .no-post h1{
+    font-size: 20px;
+    font-weight: 900;
+}
+.feed .no-post button{
+   color: var(--tPrimaryLetters);
+    background-color: var(--tPrimary);
+    border: none;
+    outline: none;
+    padding: 8px;
+    width: 90px;
+    border-radius: 30px;
+    font-weight: 700;
+    margin-left: calc(50% - 35px );
+}

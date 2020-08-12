@@ -1,0 +1,12 @@
+:root{
+    --tPrimayBg: rgb(21, 32, 43);
+    --tPrimayBgkHover: rgba(43, 135, 250, 0.3);
+    --tPrimaryLetters:white;
+    --tPrimary:rgb(29, 161, 242);
+    --widgetBackground:rgb(25, 39, 52);
+}
+
+.App{
+    height: 100vh;
+    background-color: var(--tPrimayBg);
+}

@@ -1,0 +1,23 @@
+.side-bar{
+    flex: 0.2;
+    background-color: var(--tPrimayBg);
+    height: 100vh;
+    color: var(--tPrimaryLetters);
+    padding-left: 20px;
+}
+
+.side-bar .twitter-icon{
+    font-size: 30px;
+
+}
+
+.side-bar .twitter-button{
+    background-color: var(--tPrimary);
+    color: var(--tPrimaryLetters);
+    padding: 10px;
+    outline: none;
+    border-radius: 30px;
+    width: 80%;
+    border: none;
+    font-weight: bold;
+}

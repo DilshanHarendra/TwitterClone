@@ -1,0 +1,48 @@
+.new-feed{
+    padding: 10px 10px 20px 10px;
+    border-bottom: 10px solid var(--tPrimayBgkHover);
+}
+
+.new-feed .profile{
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+}
+
+.new-feed .post-data input{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 18px;
+    width: 100% !important;
+}
+
+.new-feed .post-data .privacy{
+    color: var(--tPrimary);
+    font-weight: 600;
+}
+
+.new-feed .bottom-icons{
+    margin-left: 70px;
+}
+.new-feed .tweet{
+    margin-right: 70px;
+    background-color: var(--tPrimary);
+    color: var(--tPrimaryLetters);
+    border: none;
+    outline: none;
+    width: 80px;
+    border-radius: 30px;
+    padding: 10px;
+
+}
+.new-feed .tweet:hover{
+    opacity: 0.5;
+}
+
+.new-feed svg{
+    color: var(--tPrimary);
+    cursor: pointer;
+    margin-left: 10px;
+}
