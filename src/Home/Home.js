@@ -9,34 +9,29 @@ import {getAllPosts, getUsers} from "../dbHandler";
 function Home(props) {
 
     var username=window.localStorage.getItem("username");
-
+    if (username===null||username.toString().trim()===""){
+        props.history.push('/signin')
+    }
     useEffect(()=>{
+
         getUsers().then( r=>{
             props.addAllUser(r)
         }).catch(err=>console.log(err));
 
         getAllPosts().then(r=>{
-            console.log(r)
+
             props.addAllPosts(r)
         }).catch(err=>console.log(err))
-        if (username==null||username.toString().trim()===""){
-            props.history.push('/login')
-        }
+
 
     },[]);
-
     useEffect(()=>{
-
-        props.allUsers.find(user=>{
-            if (user.username===username.toString().trim()){
+        props.allUsers.forEach(user=>{
+            if (user.username===`@${username.toString().trim()}`){
                 props.setCurrentUser(user)
             }
-           // return true
         })
-
-
-    },[props.allUsers]);
-
+    },[props.allUsers,username]);
 
 
 

@@ -3,7 +3,7 @@ import './Signup.css';
 import TwitterIcon from "@material-ui/icons/Twitter";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
-import {registerUser} from "../dbHandler";
+import { registerUser} from "../dbHandler";
 class Signup extends Component {
 
     constructor(props) {
@@ -14,6 +14,10 @@ class Signup extends Component {
             pass:'',
             pImage:'',
             err:'none'
+        }
+        var username=window.localStorage.getItem("username");
+        if (username!==null){
+            props.history.push('/')
         }
     }
 
@@ -36,7 +40,14 @@ class Signup extends Component {
             delete this.state['err']
            registerUser(`${this.state.username}`,this.state.name.toString(),this.state.pImage.toString(),this.state.pass.toString())
                .then(m=>{
-                   this.props.addNewUser(this.state);
+                  var user={
+                      id:this.props.allUsers.length+1,
+                      username:this.state.username,
+                      name:this.state.name,
+                      profileImg:this.state.pImage,
+                      pass:this.state.pass
+                  }
+                   this.props.addNewUser(user);
                    window.localStorage.setItem("username",this.state.username)
                    this.props.history.push('/');
                })
@@ -74,7 +85,7 @@ class Signup extends Component {
 const mapStateToProps=state=>{
     return{
 
-        allUsers:state.allUsers
+        ...state
     }
 }
 const mapDispathToProps=dispatch=>{

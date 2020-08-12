@@ -12,20 +12,21 @@ function NewFeed(props) {
         const [message, setMessage]=useState("");
         const [img, setImg]=useState("");
         const [err, setErr]=useState("none");
-        console.log(props.currentUser.id)
+
         function post() {
             if (message===""||img===""){
                 setErr("block");
             }else{
                 setErr("none");
                 addNewPost(parseInt(props.currentUser.id) ,message,img).then(m=>{
+                    setMessage("");
+                    setImg("")
                     getAllPosts().then(r=>{
-                        console.log(r)
+
                         props.addAllPosts(r)
                     }).catch(err=>console.log(err))
 
-                        setMessage("");
-                        setErr("")
+
 
                 }).catch(err=>{
                     console.log(err)
@@ -36,7 +37,7 @@ function NewFeed(props) {
 
     return <div className=" new-feed mt-2">
         <div className="d-flex">
-            <img src={props.currentUser.profileImg||""} className="profile" alt="profile"/>
+            <img src={props.currentUser.profileImg||"https://www.beaconmanagement.com/wp-content/uploads/2018/04/no-person.jpg"} className="profile" alt={props.currentUser.username}/>
             <div className="post-data ml-3" >
                 <p className="text-left text-danger" style={{display:err}} >Please Fill All Details</p>
                 <input type="text" placeholder="What's happening?" className="p-1" value={message} onChange={(e)=>setMessage(e.target.value)}/>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./Widgets.css";
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 
@@ -7,6 +7,13 @@ import ListItem from "./ListItem";
 import User from "./User";
 import {connect} from "react-redux";
 function Widget(props) {
+    const [id,setId]=useState('');
+
+
+    useEffect(()=>{
+        setId(props.currentUser.id)
+    },[props.currentUser]);
+
 
     return(<div className="widget pt-2 pl-5">
             <input type="text" className="search p-2 pl-4" placeholder="&#xf002; Search Twitter"/>
@@ -26,10 +33,12 @@ function Widget(props) {
 
             <div className="list">
                 <Topic Topic="Who to follow" />
-                { props.allUsers.map(user=>(
-                    <div className="p-3 widget-box" key={user.id}>
-                        <User data={user} follow={true}/>
-                    </div>
+                { props.allUsers.map(user=>((user.id!==id)?(
+                        <div className="p-3 widget-box" key={user.id}>
+                            <User data={user} follow={true}/>
+                        </div>
+                ):(<div key={user.id}></div>)
+
                 ))}
 
 

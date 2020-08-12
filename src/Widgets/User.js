@@ -4,7 +4,7 @@ import './User.css';
 function User({data,follow}) {
     return <div className="d-flex user-info mx-auto">
         <div className="d-flex">
-            <img className="profile-picture" src={data.profileImg||""} alt={data.name}/>
+            <img className="profile-picture" src={data.profileImg||"https://www.beaconmanagement.com/wp-content/uploads/2018/04/no-person.jpg"} alt={data.name}/>
             <div className="ml-2">
                 <p className="name">{data.name}</p>
                 <p className="text-secondary">{data.username}</p>

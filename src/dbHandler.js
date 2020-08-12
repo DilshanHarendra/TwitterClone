@@ -54,11 +54,15 @@ const createDatabase= ()=>{
 }
 
 const insertSampleData=()=>{
-    exequteQuey("INSERT INTO users (id,username,name,profileImg,pass) VALUES ( null,'@Dilshan123','Dilshan','http://www.venmond.com/demo/vendroid/img/avatar/big.jpg',123),( null,'@Hashini456','Hashini','http://www.venmond.com/demo/vendroid/img/avatar/big.jpg',123); "
+    exequteQuey("INSERT INTO users (id,username,name,profileImg,pass) VALUES ( null,'@User','User','https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRV72eA4Pfos1uk0fI2HDNogT6i0mXxtSWW2g&usqp=CAU',123),( null,'@User2','User2','http://www.venmond.com/demo/vendroid/img/avatar/big.jpg',123); "
     )
         .then(m=>{})
         .catch(err=>{})
-    exequteQuey("INSERT INTO posts (id ,userid,originalUser, details,postImg,time)  values (null,1,1,'The new Cabinet will be sworn in tomorrow at the Auditorium, Magul Maduwa, in Kandy 28 Cabinet Ministers and 40 State Ministers to be appointed.Live via @GotabayaR Facebook page SriLanka LKA #CabinetSL #GenElecSL','https://beta.techcrunch.com/wp-content/uploads/2017/02/instagram-carousels.gif',DATETIME()) "
+    exequteQuey(`INSERT INTO posts (id ,userid,originalUser, details,postImg,time) 
+                        values (null,1,1,'The new Cabinet will be sworn in tomorrow at the Auditorium, Magul Maduwa, in Kandy 28 Cabinet Ministers and 40 State Ministers to be appointed.Live via @GotabayaR Facebook page SriLanka LKA #CabinetSL #GenElecSL','https://beta.techcrunch.com/wp-content/uploads/2017/02/instagram-carousels.gif',DATETIME()),
+                        (null,2,2,'The new Cabinet will be sworn in tomorrow at the Auditorium, Magul Maduwa, in Kandy 28 Cabinet Ministers and 40 State Ministers to be appointed.Live via @GotabayaR Facebook page SriLanka LKA #CabinetSL #GenElecSL','https://beta.techcrunch.com/wp-content/uploads/2017/02/instagram-carousels.gif',DATETIME()),
+                         (null,1,1,'In 2002, the West Indies paceman dismissed legendary India batsman Sachin Tendulkar thrice in the five-Test series at home. Happy birthday to Pedro Collins!','https://farm6.staticflickr.com/5210/14003824662_77a06e83db_o.gif',DATETIME()),
+                          (null,1,1,'A difficult game but a very important point. Keep on fighting until the end 💪🏼 #FinoAllaFine','https://media1.giphy.com/media/sRHVFZVZlHsOBwYTFn/giphy.gif',DATETIME()) `
     )
         .then(m=>{})
         .catch(err=>{})
@@ -86,12 +90,12 @@ const getUsers=()=>{
 
 const addNewPost=(userid,details,postImg)=>{
     console.log(`null,${userid},${userid},'${details}','${postImg}',DATETIME()`)
-    return exequteQuey(`INSERT INTO posts (id ,userid,originalUser, details,postImg,time) VALUES (null,${userid},${userid},'${details}','${postImg}',DATETIME()`);
+    return exequteQuey(`INSERT INTO posts (id ,userid,originalUser, details,postImg,time) VALUES (null,${userid},${userid},'${details}','${postImg}',DATETIME())`);
 
 }
 
 const getAllPosts=()=>{
-    return getQueryData(`SELECT * FROM posts `);
+    return getQueryData(`SELECT * FROM posts ORDER BY time DESC `);
                 
 }
 //-------------------------------------------------------

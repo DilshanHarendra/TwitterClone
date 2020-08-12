@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import "./Sidebar.css";
 import SidebarLink from "./SidebarLink";
 
@@ -11,15 +11,19 @@ import ListAltIcon from "@material-ui/icons/ListAlt";
 import PermIdentityIcon from "@material-ui/icons/PermIdentity";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import TwitterIcon from "@material-ui/icons/Twitter";
-
+import { useHistory } from "react-router-dom";
 import User from "../Widgets/User";
 import {connect} from "react-redux";
-class Sidebar extends Component {
+function Sidebar(props){
+    var history=useHistory();
+
+    const logout=()=>{
+        window.localStorage.clear();
+        history.push('/signin');
+    }
 
 
 
-
-    render() {
         return (
             <div id="sidebar" className="side-bar">
                 <TwitterIcon className="twitter-icon ml-2 mt-2 mb-2"/>
@@ -33,12 +37,14 @@ class Sidebar extends Component {
                 <SidebarLink name="More" Icon={MoreHorizIcon}/>
 
                 <button className="twitter-button mx-auto mb-4 mt-3"> Twitter</button>
+                <div onClick={logout} className="user">
+                    <User   data={props.currentUser}/>
+                </div>
 
-                <User data={this.props.currentUser}/>
             </div>
 
         );
-    }
+
 }
 const mapStateToProps=state=>{
     return{

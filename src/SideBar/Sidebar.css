@@ -21,3 +21,6 @@
     border: none;
     font-weight: bold;
 }
+.side-bar .user{
+    cursor: pointer;
+}

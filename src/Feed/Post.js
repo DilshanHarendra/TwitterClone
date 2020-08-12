@@ -1,24 +1,37 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./Post.css";
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
-import userData from "../userData";
-function Post() {
+
+import {connect} from "react-redux";
+function Post(props) {
+
+    const [user, setUser] = useState([]);
+
+    useEffect(()=>{
+        props.allUsers.forEach(user => {
+            if (user.id === props.data.userid) {
+                setUser(user);
+            }
+        })
+    },[props])
+    function calTime(h) {
+        var time = new Date(h).getHours();
+        var now = new Date().getHours();
+        return now - time;
+    }
+
+
 
     return <div className="post d-flex p-3">
-        <img src={userData.profilePicture} className="profile-picture" alt={userData.username}/>
+        <img src={user.profileImg||"https://www.beaconmanagement.com/wp-content/uploads/2018/04/no-person.jpg"} className="profile-picture" alt={user.name}/>
         <div className="post-data ml-3">
             <div className="d-flex">
-                <h2>Username</h2>
-                <p className="text-secondary ml-3">@Username 4h </p>
+                <h2>{user.name}</h2>
+                <p className="text-secondary ml-3">{user.username} {calTime(props.data.time)}h </p>
             </div>
 
-            <p>The new Cabinet will be sworn in tomorrow at the Auditorium, Magul Maduwa, in Kandy. 28 Cabinet Ministers and 40 State Ministers to be appointed.
-                Live via
-                <span>@GotabayaR</span>
-
-                Facebook page.
-                <span>#SriLanka</span> <span>#LKA</span> <span>#CabinetSL</span> <span>#GenElecSL</span>    </p>
-            <img className="post-image" src={userData.profilePicture} alt=""/>
+            <p>{props.data.details}</p>
+            <img className="post-image" src={props.data.postImg} alt=""/>
             <div className="d-flex mt-2 justify-content-between pl-2 pr-2 text-secondary">
                 <div className="align-items-center">
                     <i className="fa fa-comment-o mr-1" aria-hidden="true"></i> 1
@@ -35,4 +48,11 @@ function Post() {
             </div>
         </div>
     </div>
-}export default Post;
+
+}
+const mapStateToProps = state => {
+    return {
+        ...state
+    }
+}
+export default connect(mapStateToProps)(Post);
