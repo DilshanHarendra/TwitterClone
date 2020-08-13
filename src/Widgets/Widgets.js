@@ -11,7 +11,7 @@ function Widget(props) {
 
 
     useEffect(()=>{
-        setId(props.currentUser.id)
+        setId(props.currentUser.uid)
     },[props.currentUser]);
 
 
@@ -33,11 +33,11 @@ function Widget(props) {
 
             <div className="list">
                 <Topic Topic="Who to follow" />
-                { props.allUsers.map(user=>((user.id!==id)?(
-                        <div className="p-3 widget-box" key={user.id}>
+                { props.allUsers.map(user=>((user.uid!==id)?(
+                        <div className="p-3 widget-box" key={user.uid}>
                             <User data={user} follow={true}/>
                         </div>
-                ):(<div key={user.id}></div>)
+                ):(<div key={user.uid}></div>)
 
                 ))}
 

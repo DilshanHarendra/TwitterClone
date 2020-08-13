@@ -1,52 +1,72 @@
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import "./Post.css";
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 
 import {connect} from "react-redux";
+
+import ReTweet from "./ReTweet";
+
+
 function Post(props) {
 
-    const [user, setUser] = useState([]);
 
-    useEffect(()=>{
-        props.allUsers.forEach(user => {
-            if (user.id === props.data.userid) {
-                setUser(user);
-            }
-        })
-    },[props])
+    const [showReTweet, setShowReTweet] = useState('none');
+
+
     function calTime(h) {
-        var time = new Date(h).getHours();
-        var now = new Date().getHours();
-        return now - time;
-    }
+        var postTime=new Date(h);
+        var now= new  Date();
+        var days=now.getDay()-postTime.getDay();
+        var hours= Math.abs(now.getHours()-postTime.getHours())
 
+        if (days===0){
+            return hours;
+        }else {
+            return `${days}d ${hours}`;
+        }
+
+
+    }
+        function retweet(post) {
+           setShowReTweet('block')
+           //console.log()
+
+
+
+        }
+        function closeRetweet() {
+            setShowReTweet('none')
+        }
 
 
     return <div className="post d-flex p-3">
-        <img src={user.profileImg||"https://www.beaconmanagement.com/wp-content/uploads/2018/04/no-person.jpg"} className="profile-picture" alt={user.name}/>
+        <img src={props.data.profileImg||"https://www.beaconmanagement.com/wp-content/uploads/2018/04/no-person.jpg"} className="profile-picture" alt={props.data.name}/>
         <div className="post-data ml-3">
             <div className="d-flex">
-                <h2>{user.name}</h2>
-                <p className="text-secondary ml-3">{user.username} {calTime(props.data.time)}h </p>
+                <h2>{props.data.name}</h2>
+                <p className="text-secondary ml-3">{props.data.username} {calTime(props.data.time)}h </p>
             </div>
 
             <p>{props.data.details}</p>
             <img className="post-image" src={props.data.postImg} alt=""/>
             <div className="d-flex mt-2 justify-content-between pl-2 pr-2 text-secondary">
-                <div className="align-items-center">
+                <div className="align-items-center bicon">
                     <i className="fa fa-comment-o mr-1" aria-hidden="true"></i> 1
                 </div>
-                <div className="align-items-center">
-                    <i className="fa fa-retweet mr-1" aria-hidden="true"></i> 2
+                <div className="align-items-center bicon" onClick={()=>retweet(props.data)}  >
+                    <i className="fa fa-retweet mr-1" aria-hidden="true"></i> 1
                 </div>
-                <div className="align-items-center">
+                <div className="align-items-center bicon">
                     <FavoriteBorderOutlinedIcon className="mr-1"/> 2
                 </div>
-                <div className="align-items-center">
+                <div className="align-items-center bicon">
                     <i className="fa fa-upload mr-1" aria-hidden="true"></i>2
                 </div>
             </div>
         </div>
+
+        <ReTweet  data={props.data} show={showReTweet} close={closeRetweet}/>
+
     </div>
 
 }

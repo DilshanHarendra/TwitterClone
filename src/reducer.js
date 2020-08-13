@@ -9,7 +9,7 @@ function reducer(state=initialize,action) {
 
     switch (action.type) {
         case 'addNewPost':{
-            return {...state,posts: action.post}
+            return {...state,posts: [ action.post,...state.posts]}
         }
         case 'addPosts':{
             return {...state,posts: [...action.posts]}

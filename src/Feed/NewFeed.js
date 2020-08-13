@@ -18,13 +18,21 @@ function NewFeed(props) {
                 setErr("block");
             }else{
                 setErr("none");
-                addNewPost(parseInt(props.currentUser.id) ,message,img).then(m=>{
+                addNewPost(parseInt(props.currentUser.uid) ,message,img).then(m=>{
                     setMessage("");
                     setImg("")
-                    getAllPosts().then(r=>{
-
-                        props.addAllPosts(r)
-                    }).catch(err=>console.log(err))
+                    var post={
+                        details:message,
+                        name: props.currentUser.name,
+                        pass: props.currentUser.pass,
+                        pid: props.posts.length+1,
+                        postImg: img,
+                        profileImg: props.currentUser.profileImg,
+                        time: new Date(),
+                        uid: props.currentUser.uid,
+                        username: props.currentUser.username
+                    }
+                    props.addNewPost(post)
 
 
 
@@ -66,7 +74,7 @@ const mapStateToProps=state=>{
 }
 const mapDispathToProps=dispatch=>{
     return{
-        addAllPosts:(posts)=>{dispatch({type:'addPosts',posts:posts})},
+        addNewPost:(post)=>{dispatch({type:'addNewPost',post:post})},
 
     }
 }

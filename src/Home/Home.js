@@ -4,7 +4,7 @@ import "./home.css";
 import Feed from "../Feed/Feed";
 import Sidebar from "../SideBar/Sidebar";
 import {connect} from "react-redux";
-import {getAllPosts, getUsers} from "../dbHandler";
+import {getAllPosts, getAllRetweet, getUsers} from "../dbHandler";
 
 function Home(props) {
 
@@ -13,16 +13,26 @@ function Home(props) {
         props.history.push('/signin')
     }
     useEffect(()=>{
-
         getUsers().then( r=>{
-            props.addAllUser(r)
-        }).catch(err=>console.log(err));
+                props.addAllUser(r)
+            }).catch(err=>console.log(err));
 
         getAllPosts().then(r=>{
 
             props.addAllPosts(r)
         }).catch(err=>console.log(err))
 
+        getAllRetweet().then(data=>{
+            console.log(data)
+            var ndata=[...data];
+            ndata.forEach(post=>{
+                var rid="r"+post.pid
+                var data={...post,pid:rid,retweet:true}
+                props.addNewPost(data);
+            })
+
+
+        }).catch(err=>console.log(err))
 
     },[]);
     useEffect(()=>{
@@ -57,8 +67,8 @@ const mapDispathToProps=dispatch=>{
     return{
         addAllUser:(users)=>{dispatch({type:'addUsers',users:users})},
         addAllPosts:(posts)=>{dispatch({type:'addPosts',posts:posts})},
-        setCurrentUser:(user)=>{dispatch({type:'currentUser',user:user})}
-
+        setCurrentUser:(user)=>{dispatch({type:'currentUser',user:user})},
+        addNewPost:(post)=>{dispatch({type:'addNewPost',post:post})},
     }
 }
 export default connect(mapStateToProps,mapDispathToProps)(Home);

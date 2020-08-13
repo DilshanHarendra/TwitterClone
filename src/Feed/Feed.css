@@ -43,3 +43,16 @@
     font-weight: 700;
     margin-left: calc(50% - 35px );
 }
+.feed .profile-picture{
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+}
+.feed .post-data{
+    margin-left: 10px;
+    align-items: center;
+}
+.feed .re-post{
+    border: 1px solid rgba(255,255,255,0.1);
+    width: 100%;
+}
