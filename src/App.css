@@ -10,3 +10,7 @@
     height: 100%;
     background-color: var(--tPrimayBg);
 }
+.page-not-found{
+    display: grid;
+    place-items: center;
+}

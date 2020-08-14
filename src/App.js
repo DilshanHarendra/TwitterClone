@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './App.css';
-import { BrowserRouter as Router} from "react-router-dom";
+import {BrowserRouter as Router, Redirect} from "react-router-dom";
 import {Route, Switch} from "react-router";
 import Home from "./Home/Home";
 
@@ -12,6 +12,7 @@ import Signin from "./SignIn/SignIn";
 import {Provider} from "react-redux";
 import {createStore} from "redux";
 import reducer from "./reducer";
+import PageNotFound from "./PageNotFound";
 function App() {
 
 
@@ -32,6 +33,8 @@ function App() {
                             <Route path="/" exact component={Home}/>
                             <Route path="/signup" exact component={Signup}/>
                             <Route path="/signin" exact component={Signin}/>
+
+                            <Route component={PageNotFound} />
                         </Switch>
                     </div>
 
