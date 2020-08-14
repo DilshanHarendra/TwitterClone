@@ -111,7 +111,10 @@ const addReTweet=(userid,postid,message)=>{
 
 }
 const getAllRetweet=()=>{
-    return getQueryData(`SELECT b.uid as ruid ,b.username as rusername , b.name as rname, b.profileImg as rprofileImg ,b.pass as rpass,r.retime as rtime ,* FROM posts p, users u, retweets r,users b WHERE r.rpid=p.pid AND u.uid=p.uid AND r.ruid=b.uid   ORDER BY time DESC `);
+    return getQueryData(`SELECT b.uid as ruid ,b.username as rusername , b.name as rname, b.profileImg as rprofileImg ,r.retime as rtime ,
+                                      u.uid as uid ,u.username as username , u.name as name, u.profileImg as profileImg , 
+                                      p.pid as pid, p.postImg as postImg, r.comment as comment
+                                FROM posts p, users u, retweets r,users b WHERE r.rpid=p.pid AND u.uid=p.uid AND r.ruid=b.uid   ORDER BY time DESC `);
 
 }
 

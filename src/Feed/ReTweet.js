@@ -2,7 +2,7 @@ import React, { useState} from "react";
 import {connect} from "react-redux";
 import CloseIcon from "@material-ui/icons/Close";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
-import {addNewPost, addReTweet, getAllPosts} from "../dbHandler";
+import { addReTweet} from "../dbHandler";
 
 
 function ReTweet(props) {
@@ -28,7 +28,7 @@ function ReTweet(props) {
                 rprofileImg:props.currentUser.profileImg,
                 rtime:new Date()
             }
-            var post={...props.data,pid:rid,retweet:true,newmessage:mess,...ruser}
+            var post={...props.data,pid:rid,retweet:true,comment:mess,...ruser}
             props.addNewPost(post);
             props.close()
             }

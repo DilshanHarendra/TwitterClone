@@ -7,6 +7,7 @@ import {connect} from "react-redux";
 
 function Feed(props) {
 
+
     function calTime(h) {
         var postTime=new Date(h);
         var now= new  Date();
@@ -54,13 +55,13 @@ function Feed(props) {
                                         <p className="text-secondary pt-3 ml-3">{post.rusername} {calTime(post.rtime)}h </p>
                                     </div>
                                     <p>{post.comment}</p>
-                                    <Post data={post}  />
+                                    <Post data={post}  retweet={false} />
                                 </div>
                             </div>
 
                         </div>
                     ):(
-                        <Post data={post} key={post.pid}  />
+                        <Post data={post} key={post.pid} retweet={true}  />
                         )
 
 

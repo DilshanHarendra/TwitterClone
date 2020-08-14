@@ -23,7 +23,7 @@ function Home(props) {
         }).catch(err=>console.log(err))
 
         getAllRetweet().then(data=>{
-            console.log(data)
+
             var ndata=[...data];
             ndata.forEach(post=>{
                 var rid="r"+post.pid

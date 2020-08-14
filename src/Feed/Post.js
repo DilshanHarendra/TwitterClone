@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./Post.css";
 import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
 
@@ -11,7 +11,15 @@ function Post(props) {
 
 
     const [showReTweet, setShowReTweet] = useState('none');
+    useEffect(()=>{
+        var btn = document.getElementById('retweet');
+        if(!props.retweet){
+            btn.setAttribute('disable',true);
+        }else{
+            btn.removeAttribute('disable');
+        }
 
+    },[props.retweet])
 
     function calTime(h) {
         var postTime=new Date(h);
@@ -27,8 +35,11 @@ function Post(props) {
 
 
     }
-        function retweet(post) {
-           setShowReTweet('block')
+        function retweet() {
+            if (props.retweet){
+                setShowReTweet('block')
+            }
+
            //console.log()
 
 
@@ -53,9 +64,9 @@ function Post(props) {
                 <div className="align-items-center bicon">
                     <i className="fa fa-comment-o mr-1" aria-hidden="true"></i> 1
                 </div>
-                <div className="align-items-center bicon" onClick={()=>retweet(props.data)}  >
+                <button className="align-items-center bicon re-tweet-button"  onClick={()=>retweet()}  id="retweet" >
                     <i className="fa fa-retweet mr-1" aria-hidden="true"></i> 1
-                </div>
+                </button>
                 <div className="align-items-center bicon">
                     <FavoriteBorderOutlinedIcon className="mr-1"/> 2
                 </div>

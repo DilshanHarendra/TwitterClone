@@ -6,7 +6,7 @@ import GifIcon from '@material-ui/icons/Gif';
 import InsertChartIcon from '@material-ui/icons/InsertChart';
 import InsertEmoticonOutlinedIcon from '@material-ui/icons/InsertEmoticonOutlined';
 import {connect} from "react-redux";
-import {addNewPost, getAllPosts} from "../dbHandler";
+import {addNewPost} from "../dbHandler";
 
 function NewFeed(props) {
         const [message, setMessage]=useState("");

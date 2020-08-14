@@ -129,3 +129,15 @@
 .re-tweet-post .bicon:hover{
     color: var(--tPrimary);
 }
+.re-tweet-button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: gray;
+}
+.re-tweet-button:focus{
+    outline: none;
+}
+.re-tweet-button:disabled{
+    color: gray !important;
+}
