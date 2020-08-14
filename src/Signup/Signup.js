@@ -75,7 +75,7 @@ class Signup extends Component {
                             <button className="mx-auto mt-4" type="submit">Sign up</button>
                         </form>
 
-                        <Link to="/login">Already have an account</Link>
+                        <Link to="/signin">Already have an account</Link>
 
                     </div>
             </div>
